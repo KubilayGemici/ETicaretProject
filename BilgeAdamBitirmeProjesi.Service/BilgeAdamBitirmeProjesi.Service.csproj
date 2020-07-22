@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Common\BilgeAdamBitirmeProjesi.Common.csproj" />
+    <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Core\BilgeAdamBitirmeProjesi.Core.csproj" />
+    <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Model\BilgeAdamBitirmeProjesi.Model.csproj" />
+  </ItemGroup>
+
+</Project>

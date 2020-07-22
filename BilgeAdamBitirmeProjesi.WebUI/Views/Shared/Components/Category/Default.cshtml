@@ -1,0 +1,10 @@
+﻿@model List<CategoryViewModel>
+
+<div class="mainmenu pull-left">
+    <ul class="nav navbar-nav collapse navbar-collapse">
+        @foreach (CategoryViewModel item in Model)
+        {
+            <li><a asp-controller="Home" asp-action="Products" asp-route-id="@item.Id" title="">@item.CategoryName</a></li>
+        }
+    </ul>
+</div>

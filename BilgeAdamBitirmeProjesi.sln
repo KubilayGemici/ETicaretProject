@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.Core", "BilgeAdamBitirmeProjesi.Core\BilgeAdamBitirmeProjesi.Core.csproj", "{3966D405-7338-40D0-8C18-646100405FB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.Model", "BilgeAdamBitirmeProjesi.Model\BilgeAdamBitirmeProjesi.Model.csproj", "{239F1268-150E-42EC-95E7-28AF6BA3B830}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.Service", "BilgeAdamBitirmeProjesi.Service\BilgeAdamBitirmeProjesi.Service.csproj", "{41116F33-491E-43FE-9B98-0E5E3431735C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.Common", "BilgeAdamBitirmeProjesi.Common\BilgeAdamBitirmeProjesi.Common.csproj", "{FBA552BB-578D-42EF-9105-64571951D718}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.API", "BilgeAdamBitirmeProjesi.API\BilgeAdamBitirmeProjesi.API.csproj", "{9D262170-CCB4-4A6F-859E-F949AA4A865D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdamBitirmeProjesi.WebUI", "BilgeAdamBitirmeProjesi.WebUI\BilgeAdamBitirmeProjesi.WebUI.csproj", "{EC079B66-9E43-4ED7-927A-C7B61539DB79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3966D405-7338-40D0-8C18-646100405FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3966D405-7338-40D0-8C18-646100405FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3966D405-7338-40D0-8C18-646100405FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3966D405-7338-40D0-8C18-646100405FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239F1268-150E-42EC-95E7-28AF6BA3B830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239F1268-150E-42EC-95E7-28AF6BA3B830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239F1268-150E-42EC-95E7-28AF6BA3B830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239F1268-150E-42EC-95E7-28AF6BA3B830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41116F33-491E-43FE-9B98-0E5E3431735C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41116F33-491E-43FE-9B98-0E5E3431735C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41116F33-491E-43FE-9B98-0E5E3431735C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41116F33-491E-43FE-9B98-0E5E3431735C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA552BB-578D-42EF-9105-64571951D718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA552BB-578D-42EF-9105-64571951D718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA552BB-578D-42EF-9105-64571951D718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA552BB-578D-42EF-9105-64571951D718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D262170-CCB4-4A6F-859E-F949AA4A865D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D262170-CCB4-4A6F-859E-F949AA4A865D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D262170-CCB4-4A6F-859E-F949AA4A865D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D262170-CCB4-4A6F-859E-F949AA4A865D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC079B66-9E43-4ED7-927A-C7B61539DB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC079B66-9E43-4ED7-927A-C7B61539DB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC079B66-9E43-4ED7-927A-C7B61539DB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC079B66-9E43-4ED7-927A-C7B61539DB79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B424136-4833-436F-BB86-E3BDBA5B166F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+﻿@model List<ProductViewModel>
+@{
+    ViewData["Title"] = "Default";
+}
+
+<div class="container">
+        <div class="row">
+            @foreach (ProductViewModel item in Model)
+            {
+                <div class="col-sm-12 padding-right">
+                    <div class="features_items">
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <img src="@item.Image" alt="" width="500" height="500" />
+                            </div>
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <h2><a asp-controller="Home" asp-action="Product" asp-route-id="@item.Id" title="">@item.Price</a></h2>
+                                    <p>@item.ProductName</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+</div>

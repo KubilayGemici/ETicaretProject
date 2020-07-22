@@ -1,0 +1,77 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+    <link href="~/eshopper/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/eshopper/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/eshopper/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/eshopper/css/price-range.css" rel="stylesheet">
+    <link href="~/eshopper/css/animate.css" rel="stylesheet">
+    <link href="~/eshopper/css/main.css" rel="stylesheet">
+    <link href="~/eshopper/css/responsive.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <section id="form">
+        <!--form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="login-form">
+                        <h2>Giriş</h2>
+                        <div class="login-register-form">
+                            <form asp-controller="Account" asp-action="Login" method="post">
+                                <div class="row">
+                                    <div class="col-12 mb-20">
+                                        <input asp-for="Email" class="form-control" type="text" placeholder="Email" />
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+                                    </div>
+                                    <div class="col-12 mt-10">
+                                        <button type="submit" class="button button-primary button-outline">Giriş Yap</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!--/login form-->
+                </div>
+                <div class="col-sm-1">
+                    <h2 class="or">VEYA</h2>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>Kayıt Ol</h2>
+                        <form action="#">
+                            <input type="text" placeholder="Name" />
+                            <input type="email" placeholder="Email Address" />
+                            <input type="password" placeholder="Password" />
+                            <button type="submit" class="btn btn-default">Kayıt Ol</button>
+                        </form>
+                    </div><!--/sign up form-->
+                </div>
+            </div>
+        </div>
+    </section><!--/form-->
+
+
+    <script src="~/eshopper/js/jquery.js"></script>
+    <script src="~/eshopper/js/price-range.js"></script>
+    <script src="~/eshopper/js/jquery.scrollUp.min.js"></script>
+    <script src="~/eshopper/js/bootstrap.min.js"></script>
+    <script src="~/eshopper/js/jquery.prettyPhoto.js"></script>
+    <script src="~/eshopper/js/main.js"></script>
+</body>
+</html>
