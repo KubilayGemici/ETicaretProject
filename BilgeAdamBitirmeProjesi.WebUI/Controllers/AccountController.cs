@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using AutoMapper;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
+using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.WebUI.APIs;
 using BilgeAdamBitirmeProjesi.WebUI.Models.AccountViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace BilgeAdamBitirmeProjesi.WebUI.Controllers
 {
@@ -17,13 +20,17 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Controllers
     {
         private readonly IAccountApi _accountApi;
         private readonly IMapper _mapper;
+        private readonly IUserApi _userApi;
+
 
         public AccountController(
             IAccountApi accountApi,
-            IMapper mapper)
+            IMapper mapper,
+            IUserApi userApi)
         {
             _accountApi = accountApi;
             _mapper = mapper;
+            _userApi = userApi;
         }
 
         [HttpGet]
@@ -65,6 +72,31 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Controllers
             }
             return View(request);
         }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Register(string email, string password, string name)
+        {
+            var result = await _accountApi.CheckUser(email);
+
+            if (result.Value == true)
+            {
+                ViewBag.uyari = "Böyle bir kullanıcı var";
+            }
+            else
+            {
+
+                var addUser = await _accountApi.AddUser(email, password, name);
+            }
+
+
+
+            return View("Login");
+
+        }
+
+
         //Kullanıcı Çıkış İşlemleri
         public async Task<IActionResult> Logout()
         {

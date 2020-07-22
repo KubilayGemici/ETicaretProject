@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BilgeAdamBitirmeProjesi.API.Controllers
@@ -101,6 +102,20 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             var result = await _us.Activate(id);
             //Databaseden son hali çekilir
             return _mapper.Map<UserResponse>(await _us.GetById(id));
+        }
+
+        public async Task<ActionResult<bool>> CheckUser(string email)
+        {
+            var result = await _us.Default(x => x.Email == email).CountAsync();
+
+            if (result == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private async Task<bool> UserExist(Guid id)

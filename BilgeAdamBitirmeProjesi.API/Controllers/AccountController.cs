@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using BilgeAdamBitirmeProjesi.Common.Client.Enums;
 using BilgeAdamBitirmeProjesi.Common.Client.Extensions;
 using BilgeAdamBitirmeProjesi.Common.Client.Models;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
+using BilgeAdamBitirmeProjesi.Core.Entity;
+using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.Service.Service.User;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -45,6 +49,40 @@ namespace BilgeAdamETic.API.Controllers
 
             return new WebApiResponse<UserResponse>("User Not Found", false);
         }
+
+        [HttpGet("check_user")]
+        public async Task<ActionResult<bool>> CheckUser(string email)
+        {
+            var result = await _us.Default(x => x.Email == email).CountAsync();
+
+            if (result == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [HttpPost("add_user")]
+        public async Task<ActionResult<bool>> AddUser(string email,string password,string name)
+        {
+            Guid id = Guid.NewGuid();
+
+            User user = new User();
+            user.FirstName = name;
+            user.Email = email;
+            user.Password = password;
+            user.Id = id;
+
+            var gelen = _us.Add(user);
+
+
+
+            return true;
+        }
+
         private GetAccessToken SetAccessToken(UserResponse response)
         {
             var claims = new List<Claim>//Haklar Listesi

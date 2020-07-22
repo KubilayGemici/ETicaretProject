@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace BilgeAdamBitirmeProjesi.API.Controllers
@@ -120,6 +122,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         public async Task<ActionResult<List<ProductResponse>>> GetByCategoryId(Guid categoryId)
         {
             return _mapper.Map<List<ProductResponse>>(_ps.Default(x => x.CategoryId == categoryId));
+
         }
     }
 }

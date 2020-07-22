@@ -50,20 +50,25 @@
                 <div class="col-sm-1">
                     <h2 class="or">VEYA</h2>
                 </div>
-                <div class="col-sm-4">
-                    <div class="signup-form">
-                        <!--sign up form-->
-                        <h2>Kayıt Ol</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email Address" />
-                            <input type="password" placeholder="Password" />
-                            <button type="submit" class="btn btn-default">Kayıt Ol</button>
-                        </form>
-                    </div><!--/sign up form-->
-                </div>
+
             </div>
         </div>
+
+        <div class="col-sm-4">
+            <div class="signup-form">
+                <!--sign up form-->
+                <h2>Kayıt Ol</h2>
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <input type="text" name="name" placeholder="Name" />
+                    <input type="email" name="email" placeholder="Email Address" />
+                    <input type="text" name="password" placeholder="Password" />
+                    <button type="submit" class="btn btn-default">Kayıt Ol</button>
+                </form>
+
+                <label style="color:red">@ViewBag.uyari</label>
+            </div><!--/sign up form-->
+        </div>
+
     </section><!--/form-->
 
 
