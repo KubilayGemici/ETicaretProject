@@ -25,6 +25,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     Title = table.Column<string>(maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(maxLength: 250, nullable: true),
+                    Adress = table.Column<string>(maxLength: 250, nullable: true),
+                    Number = table.Column<string>(maxLength: 12, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 12, nullable: false),
                     LastLogin = table.Column<DateTime>(maxLength: 50, nullable: true),
@@ -45,6 +47,33 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Carts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    CreatedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    CreatedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    CreatedUserID = table.Column<Guid>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    ModifiedUserID = table.Column<Guid>(nullable: true),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Carts_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,6 +108,37 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    CreatedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    CreatedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    CreatedUserID = table.Column<Guid>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    ModifiedUserID = table.Column<Guid>(nullable: true),
+                    Quantity = table.Column<int>(maxLength: 15, nullable: false),
+                    TotalPrice = table.Column<int>(maxLength: 20, nullable: false),
+                    PaymentType = table.Column<int>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,6 +196,41 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CartItems",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    CreatedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    CreatedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    CreatedUserID = table.Column<Guid>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
+                    ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
+                    ModifiedUserID = table.Column<Guid>(nullable: true),
+                    ProductId = table.Column<Guid>(nullable: false),
+                    Amount = table.Column<int>(maxLength: 50, nullable: false),
+                    CartId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -183,7 +278,7 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "OrderDetails",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -196,46 +291,48 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
                     ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
                     ModifiedUserID = table.Column<Guid>(nullable: true),
+                    OrderId = table.Column<Guid>(nullable: false),
                     ProductId = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<Guid>(nullable: false),
-                    Quantity = table.Column<int>(maxLength: 15, nullable: false),
-                    TotalPrice = table.Column<int>(maxLength: 20, nullable: false),
-                    PaymentType = table.Column<int>(nullable: false),
-                    OrderDate = table.Column<DateTime>(nullable: false)
+                    ProductName = table.Column<string>(maxLength: 50, nullable: false),
+                    ProductPrice = table.Column<decimal>(maxLength: 255, nullable: false),
+                    ProductStock = table.Column<int>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Users_CreatedUserID",
-                        column: x => x.CreatedUserID,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Users_ModifiedUserID",
-                        column: x => x.ModifiedUserID,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_OrderDetails_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_OrderDetails_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "CreatedComputerName", "CreatedDate", "CreatedIP", "CreatedUserID", "Email", "FirstName", "ImageUrl", "LastIPAdress", "LastLogin", "LastName", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "ModifiedUserID", "Password", "Status", "Title" },
-                values: new object[] { new Guid("fd6ddaa7-3b29-46b1-9326-599c8c71558a"), null, null, null, null, "admin@admin.com", "Admin", "/", "94.54.234.138", new DateTime(2020, 7, 9, 12, 46, 12, 163, DateTimeKind.Local).AddTicks(8337), "Admin", null, null, null, null, "123", 1, "Admin" });
+                columns: new[] { "Id", "Adress", "CreatedComputerName", "CreatedDate", "CreatedIP", "CreatedUserID", "Email", "FirstName", "ImageUrl", "LastIPAdress", "LastLogin", "LastName", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "ModifiedUserID", "Number", "Password", "Status", "Title" },
+                values: new object[] { new Guid("61d59c48-18b4-4289-93e1-d16b67cdede3"), null, null, null, null, null, "admin@admin.com", "Admin", "/", "94.54.234.138", new DateTime(2020, 7, 26, 21, 51, 2, 969, DateTimeKind.Local).AddTicks(44), "Admin", null, null, null, null, null, "123", 1, "Admin" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_CartId",
+                table: "CartItems",
+                column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_ProductId",
+                table: "CartItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_UserId",
+                table: "Carts",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_CreatedUserID",
@@ -268,18 +365,13 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CreatedUserID",
-                table: "Orders",
-                column: "CreatedUserID");
+                name: "IX_OrderDetails_OrderId",
+                table: "OrderDetails",
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_ModifiedUserID",
-                table: "Orders",
-                column: "ModifiedUserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_ProductId",
-                table: "Orders",
+                name: "IX_OrderDetails_ProductId",
+                table: "OrderDetails",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -321,7 +413,16 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CartItems");
+
+            migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "OrderDetails");
+
+            migrationBuilder.DropTable(
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "Orders");

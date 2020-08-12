@@ -16,6 +16,9 @@ namespace BilgeAdamBitirmeProjesi.WebUI.APIs
         [Get("/account/login")]
         Task<ApiResponse<WebApiResponse<UserResponse>>> Login([Query] UserRequest request);
 
+        [Post("/account/register")]
+        Task<ApiResponse<WebApiResponse<UserResponse>>> Register([Query] UserRequest request);
+
         [Get("/account/check_user")]
         Task<ActionResult<bool>> CheckUser(string email);
 

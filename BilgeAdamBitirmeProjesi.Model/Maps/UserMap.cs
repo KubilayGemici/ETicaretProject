@@ -27,6 +27,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Maps
                 entity.Property(x => x.Password).HasMaxLength(12).IsRequired(true);
                 entity.Property(x => x.LastLogin).HasMaxLength(50).IsRequired(false);
                 entity.Property(x => x.LastIPAdress).HasMaxLength(250).IsRequired(false);
+                entity.Property(x => x.Adress).HasMaxLength(250).IsRequired(false);
+                entity.Property(x => x.Number).HasMaxLength(12).IsRequired(false);
 
 
                 //Karşılık belirtme durumunu sağladım.

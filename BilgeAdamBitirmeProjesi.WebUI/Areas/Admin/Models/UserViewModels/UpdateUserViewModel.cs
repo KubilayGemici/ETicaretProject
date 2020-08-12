@@ -20,5 +20,10 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels
         public string Email { get; set; }
         public string Password { get; set; }
         public Status Status { get; set; }
+        [Required]
+        public string Adress { get; set; }
+        [Required]
+        public string Number { get; set; }
+
     }
 }

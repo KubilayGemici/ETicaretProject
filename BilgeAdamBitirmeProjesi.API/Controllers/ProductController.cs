@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BilgeAdamBitirmeProjesi.API.Controllers
 {
@@ -28,6 +29,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             _mapper = mapper;
 
         }
+        //Buraya bakılacak
         [HttpGet]
         public async Task<ActionResult<List<ProductResponse>>> GetCategories()
         {
@@ -112,6 +114,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpGet("getactive")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<ProductResponse>>> GetActive()
         {
             //Tolistasync gördüğüm anda Query çalışıyor demektir.

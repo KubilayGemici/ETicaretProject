@@ -22,16 +22,6 @@ namespace BilgeAdamBitirmeProjesi.Model.Maps
                 entity.Property(x => x.Quantity).HasMaxLength(15).IsRequired(true);
                 entity.Property(x => x.TotalPrice).HasMaxLength(20).IsRequired(true);
 
-                entity
-                    .HasOne(e => e.CreatedUserOrder)
-                    .WithMany(c => c.CreatedUserOrders)
-                    .HasForeignKey(x => x.CreatedUserID);
-
-                entity
-                    .HasOne(e => e.ModifiedUserOrder)
-                    .WithMany(c => c.ModifiedUserOrders)
-                    .HasForeignKey(x => x.ModifiedUserID);
-
             });
         }
     }

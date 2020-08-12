@@ -9,8 +9,6 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
     {
         public User()
         {
-            //Product kaldırılacak.
-            Products = new HashSet<Product>();
             Comments = new HashSet<Comment>();
             Orders = new HashSet<Order>();
             CreatedUserProducts = new HashSet<Product>();
@@ -21,6 +19,7 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
             ModifiedUserComments = new HashSet<Comment>();
             CreatedUsers = new HashSet<User>();
             ModifiedUsers = new HashSet<User>();
+            Carts = new HashSet<Cart>();
 
         }
 
@@ -28,8 +27,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
         public string LastName { get; set; }
         public string Title { get; set; }
         public string ImageUrl { get; set; }
-        //Adres eklenicek.
-        //Telefon numarası kısmı olacak.
+        public string Adress { get; set; }
+        public string Number { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime? LastLogin { get; set; }
@@ -40,17 +39,17 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
 
         public virtual ICollection<User> CreatedUsers { get; set; }
         public virtual ICollection<User> ModifiedUsers { get; set; }
-        //Product
-        public virtual ICollection<Product> Products { get; set; }
+
+
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Product> CreatedUserProducts { get; set; }
         public virtual ICollection<Product> ModifiedUserProducts { get; set; }
         public virtual ICollection<Category> CreatedUserCategories { get; set; }
         public virtual ICollection<Category> ModifiedUserCategories { get; set; }
         public virtual ICollection<Comment> CreatedUserComments { get; set; }
         public virtual ICollection<Comment> ModifiedUserComments { get; set; }
-        public virtual ICollection<Order> CreatedUserOrders { get; set; }
-        public virtual ICollection<Order> ModifiedUserOrders { get; set; }
+        
     }
 }

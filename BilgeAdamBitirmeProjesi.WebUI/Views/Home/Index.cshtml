@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Default";
 }
+
 <section>
     <div class="container">
         <div class="row">
@@ -10,6 +11,7 @@
                     <h2 class="title text-center">Rüya Ev Ürünler</h2>
                     @foreach (ProductViewModel item in Model)
                     {
+
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -17,7 +19,9 @@
                                         <img src="@item.Image" alt="" />
                                         <h2>@item.Price</h2>
                                         <p>@item.ProductName</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                        <ul>
+                                            <i class="fa fa-shopping-cart"></i>@Html.ActionLink("Sepete Ekle", "AddCartCustom", new { id = ViewBag.basket })
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="choose">

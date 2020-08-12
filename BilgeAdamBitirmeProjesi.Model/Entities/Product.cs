@@ -9,6 +9,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
         public Product()
         {
             Comments = new HashSet<Comment>();
+            CartItems = new HashSet<CartItem>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
         public string ProductName { get; set; }
         public string Description { get; set; }
@@ -26,6 +28,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<CartItem> CartItems { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
 
         public virtual User CreatedUserProduct { get; set; }
         public virtual User ModifiedUserProduct { get; set; }

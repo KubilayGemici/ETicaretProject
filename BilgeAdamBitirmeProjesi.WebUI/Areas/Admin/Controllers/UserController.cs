@@ -52,18 +52,6 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool imageResult;
-                string imgPath = Upload.ImageUpload(files, _env, out imageResult);
-                if (imageResult)
-                {
-                    item.ImageUrl = imgPath;
-                }
-                else
-                {
-                    //Hata mesajı gelmiş olacak.
-                    ViewBag.Message = imgPath;
-                    return View();
-                }
                 var insertResult = await _userApi.Post(_mapper.Map<UserRequest>(item));
                 if (insertResult.IsSuccessStatusCode || insertResult.Content != null)
                     return RedirectToAction("Index");

@@ -1,0 +1,50 @@
+﻿@model List<OrderDetailViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-body">
+    <div class="row justify-content-between align-items-center mb-10">
+        <div class="col-12 col-lg-auto mb-20">
+            <div class="page-heading">
+                <h3 class="title"><span>Siparişler</span></h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-30">
+            <div class="box">
+                <div class="box-body">
+                    <table class="table table-bordered data-table data-table-default">
+                        <thead>
+                            <tr>
+                                <th>Müşteri Id</th>
+                                <th>Ürün</th>
+                                <th>Adet</th>
+                                <th>Toplam Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (OrderDetailViewModel item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Order</td>
+                                    <td>@item.Product</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td>@item.ProductStock</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/admin/assets/js/plugins/datatables/datatables.min.js"></script>
+    <script src="~/admin/assets/js/plugins/datatables/datatables.active.js"></script>
+}

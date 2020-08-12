@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Common\BilgeAdamBitirmeProjesi.Common.csproj" />
     <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Model\BilgeAdamBitirmeProjesi.Model.csproj" />
+    <ProjectReference Include="..\BilgeAdamBitirmeProjesi.Service\BilgeAdamBitirmeProjesi.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -146,6 +146,25 @@ namespace BilgeAdamBitirmeProjesi.WebUI
                 .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))
                 .AddHttpMessageHandler((s) => s.GetService<AuthTokenHandler>());
 
+            services.AddRefitClient<ICartApi>()
+                .ConfigureHttpClient(client => { client.BaseAddress = baseUri; })
+                .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(60)))
+                .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))
+                .AddHttpMessageHandler((s) => s.GetService<AuthTokenHandler>());
+
+            services.AddRefitClient<ICartItemApi>()
+                .ConfigureHttpClient(client => { client.BaseAddress = baseUri; })
+                .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(60)))
+                .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))
+                .AddHttpMessageHandler((s) => s.GetService<AuthTokenHandler>());
+
+            services.AddRefitClient<IOrderDetail>()
+                .ConfigureHttpClient(client => { client.BaseAddress = baseUri; })
+                .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(60)))
+                .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))
+                .AddHttpMessageHandler((s) => s.GetService<AuthTokenHandler>());
+
+
 
         }
     }

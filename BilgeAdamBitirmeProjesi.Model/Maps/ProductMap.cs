@@ -40,11 +40,6 @@ namespace BilgeAdamBitirmeProjesi.Model.Maps
                     .HasOne(e => e.Category)
                     .WithMany(c => c.Products)
                     .HasForeignKey(x => x.CategoryId);
-
-                entity
-                    .HasOne(e => e.User)
-                    .WithMany(c => c.Products)
-                    .HasForeignKey(x => x.UserId);
             });
         }
     }

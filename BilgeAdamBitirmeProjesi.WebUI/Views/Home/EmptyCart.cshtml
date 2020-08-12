@@ -1,0 +1,30 @@
+﻿@model Tuple<ProductViewModel, UserViewModel>
+@{
+    ViewData["Title"] = "EmptyCart";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Sepet</li>
+            </ol>
+        </div>
+        <div class="col-sm-12">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <div>
+                            @*<img src="@Model.Item1.Image" alt="" />*@
+                            <div class="col-lg-12 col-md-12 col-xs-12 shoppingReview grid-pad-20">
+                                <h2>Sipariş Özeti</h2>
+                                <h2>Sepetinizde Herhangi Bir Ürün Bulunmuyor</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

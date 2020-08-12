@@ -13,7 +13,6 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-        [Required]
         public string ImageUrl { get; set; }
         [Required(ErrorMessage ="Email Adressiniz Hatalı")]
         public string Email { get; set; }
@@ -21,5 +20,10 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels
         public string Password { get; set; }
         public string Title { get; set; }
         public Status Status { get; set; }
+        [Required]
+        public string Adress { get; set; }
+        [Required]
+        public string Number { get; set; }
+
     }
 }

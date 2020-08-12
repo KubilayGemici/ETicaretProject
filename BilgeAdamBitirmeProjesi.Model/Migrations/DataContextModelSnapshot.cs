@@ -19,6 +19,109 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreatedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("CreatedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ModifiedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("ModifiedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.CartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer")
+                        .HasMaxLength(50);
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreatedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("CreatedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ModifiedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("ModifiedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -175,9 +278,6 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     b.Property<int>("PaymentType")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("integer")
                         .HasMaxLength(15);
@@ -194,15 +294,74 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedUserID");
-
-                    b.HasIndex("ModifiedUserID");
-
-                    b.HasIndex("ProductId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.OrderDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreatedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("CreatedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ModifiedComputerName")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ModifiedIP")
+                        .HasColumnType("character varying(15)")
+                        .HasMaxLength(15);
+
+                    b.Property<Guid?>("ModifiedUserID")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("numeric")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("ProductStock")
+                        .HasColumnType("integer")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Product", b =>
@@ -297,6 +456,10 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Adress")
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
+
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
@@ -352,6 +515,10 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     b.Property<Guid?>("ModifiedUserID")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Number")
+                        .HasColumnType("character varying(12)")
+                        .HasMaxLength(12);
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("character varying(12)")
@@ -376,17 +543,41 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fd6ddaa7-3b29-46b1-9326-599c8c71558a"),
+                            Id = new Guid("61d59c48-18b4-4289-93e1-d16b67cdede3"),
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             ImageUrl = "/",
                             LastIPAdress = "94.54.234.138",
-                            LastLogin = new DateTime(2020, 7, 9, 12, 46, 12, 163, DateTimeKind.Local).AddTicks(8337),
+                            LastLogin = new DateTime(2020, 7, 26, 21, 51, 2, 969, DateTimeKind.Local).AddTicks(44),
                             LastName = "Admin",
                             Password = "123",
                             Status = 1,
                             Title = "Admin"
                         });
+                });
+
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Cart", b =>
+                {
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", "User")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.CartItem", b =>
+                {
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.Product", "Product")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Category", b =>
@@ -425,23 +616,24 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
 
             modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.Order", b =>
                 {
-                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", "CreatedUserOrder")
-                        .WithMany("CreatedUserOrders")
-                        .HasForeignKey("CreatedUserID");
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", "ModifiedUserOrder")
-                        .WithMany("ModifiedUserOrders")
-                        .HasForeignKey("ModifiedUserID");
-
-                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
+            modelBuilder.Entity("BilgeAdamBitirmeProjesi.Model.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("UserId")
+                    b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.Product", "Product")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -463,7 +655,7 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         .HasForeignKey("ModifiedUserID");
 
                     b.HasOne("BilgeAdamBitirmeProjesi.Model.Entities.User", "User")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

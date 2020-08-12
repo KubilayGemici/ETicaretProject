@@ -23,7 +23,7 @@
                     <br />
                     <div class="col-lg-12 col-12 mb-30">
                         <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-control">
-                            <option>Please select Category..</option>
+                            <option>Lütfen Kategori Seçiniz</option>
                         </select>
                     </div>
                     <br />
@@ -36,7 +36,7 @@
                     </div>
                     <br />
                     <div class="col-lg-12 col-12 mb-30">
-                        <textarea asp-for="Description" class="summernote" placeholder="Açıklama *"></textarea>
+                        <input asp-for="Description" class="form-control" type="text" placeholder="Açıklaması *">
                     </div>
                     <br />
                     <div class="col-lg-12 col-12 mb-30">

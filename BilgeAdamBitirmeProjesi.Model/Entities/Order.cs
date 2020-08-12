@@ -1,20 +1,23 @@
 ﻿using BilgeAdamBitirmeProjesi.Core.Entity;
 using System;
+using System.Collections.Generic;
 
 namespace BilgeAdamBitirmeProjesi.Model.Entities
 {
     public class Order : CoreEntity
     {
-        //Order Details ile bağlantılı yapıcaz.Düzeltilecek.
+        public Order()
+        {
+            OrderDetails = new HashSet<OrderDetail>();
+        }
+
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
         public int PaymentType { get; set; }
         public DateTime OrderDate { get; set; }
-        public Guid ProductId { get; set; }
-        public Product Product { get; set; }
-        public Guid UserId { get; set; }
 
-        public virtual User CreatedUserOrder { get; set; }
-        public virtual User ModifiedUserOrder { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public Guid UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

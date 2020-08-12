@@ -29,6 +29,17 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Infrastructure.Mappers
                 .ForAllMembers(options => options.Condition((src, dest, srcmemeber) => srcmemeber != null));
 
 
+            CreateMap<RegisterViewModel, UserRequest>()
+                .ReverseMap()
+                .IgnoreAllNonExisting()
+                .ForAllMembers(options => options.Condition((src, dest, srcmemeber) => srcmemeber != null));
+
+            CreateMap<RegisterViewModel, UserResponse>()
+                .ReverseMap()
+                .IgnoreAllNonExisting()
+                .ForAllMembers(options => options.Condition((src, dest, srcmemeber) => srcmemeber != null));
+
+
         }
     }
 }

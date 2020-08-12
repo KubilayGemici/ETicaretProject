@@ -41,7 +41,7 @@
                                         <a class="toggle" href="#">
                                             <span class="user">
                                                 <span class="avatar">
-                                                    <img src="@User.Claims.FirstOrDefault(c => c.Type.EndsWith("Image")).Value.ToString()" alt="">
+                                                    @*<img src="@User.Claims.FirstOrDefault(c => c.Type.EndsWith("Image")).Value.ToString()" alt="">*@
                                                     <span class="status"></span>
                                                 </span>
                                                 <span class="name">@User.Claims.FirstOrDefault(c => c.Type.EndsWith("emailaddress")).Value</span>
@@ -71,6 +71,7 @@
                         <li><a asp-area="Admin" asp-controller="User" asp-action="Index"><i class="ti-palette"></i> <span>Kullanıcılar</span></a></li>
                         <li><a asp-area="Admin" asp-controller="Category" asp-action="Index"><i class="ti-palette"></i> <span>Kategoriler</span></a></li>
                         <li><a asp-area="Admin" asp-controller="Product" asp-action="Index"><i class="ti-palette"></i> <span>Ürünler</span></a></li>
+                        <li><a asp-area="Admin" asp-controller="OrderDetail" asp-action="Index"><i class="ti-palette"></i> <span>Siparişler</span></a></li>
                     </ul>
                 </nav>
             </div>

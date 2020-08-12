@@ -57,10 +57,19 @@
                     <div class="col-md-8 clearfix">
                         <div class="shop-menu clearfix pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Hesabınız</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Favoriler</a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i> Sepet</a></li>
-                                <li><a asp-controller="Account" asp-action="Login" asp-area=""><i class="fa fa-lock"></i>Giriş</a></li>
+                                <li><a asp-controller="Home" asp-action="UserInformation" asp-area=""><i class="fa fa-user"></i> Hesabınız</a></li>
+                                <li><a asp-controller="Home" asp-action="EmptyCart" asp-area=""><i class="fa fa-shopping-cart"></i>Sepet (@ViewBag.basket)</a></li>
+                               
+
+                                @if (string.IsNullOrEmpty(User.Identity.Name) && @ViewBag.userLogin == null)
+                                {
+                                    <li><a asp-controller="Account" asp-action="Login" asp-area=""><i class="fa fa-lock"></i>Giriş</a></li>
+                                }
+                                else
+                                {
+                                 
+                                    <a class="fa fa-user" asp-controller="Account" asp-action="Logout" title="">Çıkış Yap</a>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -103,7 +112,7 @@
     <div class="footer-widget">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-2 col-sm-offset-1">
                     <div class="single-widget">
                         <h2>Hizmet</h2>
                         <ul class="nav nav-pills nav-stacked">

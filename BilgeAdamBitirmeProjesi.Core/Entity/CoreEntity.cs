@@ -18,5 +18,7 @@ namespace BilgeAdamBitirmeProjesi.Core.Entity
         public string ModifiedComputerName { get; set; }
         public string ModifiedIP { get; set; }
         public Guid? ModifiedUserID { get; set; }
+
+        //public Guid? UserId { get; set; }
     }
 }
