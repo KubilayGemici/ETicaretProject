@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BilgeAdamBitirmeProjesi.Model.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200726185103_Init")]
+    [Migration("20201001183832_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,8 +74,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("integer")
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric")
                         .HasMaxLength(50);
 
                     b.Property<Guid>("CartId")
@@ -111,6 +111,9 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
@@ -246,6 +249,11 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("character varying(200)")
+                        .HasMaxLength(200);
+
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
@@ -259,6 +267,16 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
 
                     b.Property<Guid?>("CreatedUserID")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("CustomerSurName")
+                        .IsRequired()
+                        .HasColumnType("character varying(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("ModifiedComputerName")
                         .HasColumnType("character varying(250)")
@@ -277,18 +295,11 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("PaymentType")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer")
-                        .HasMaxLength(15);
-
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("integer")
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("numeric")
                         .HasMaxLength(20);
 
                     b.Property<Guid>("UserId")
@@ -346,16 +357,16 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                         .HasColumnType("character varying(50)")
                         .HasMaxLength(50);
 
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("numeric")
-                        .HasMaxLength(255);
-
-                    b.Property<int>("ProductStock")
+                    b.Property<int>("Quantity")
                         .HasColumnType("integer")
-                        .HasMaxLength(255);
+                        .HasMaxLength(20);
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("numeric")
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
@@ -545,13 +556,15 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("61d59c48-18b4-4289-93e1-d16b67cdede3"),
+                            Id = new Guid("f6d0f9d9-f28d-4b9d-ae95-ca703f1aa29e"),
+                            Adress = "SeyyidÖmer Mah.",
                             Email = "admin@admin.com",
                             FirstName = "Admin",
                             ImageUrl = "/",
                             LastIPAdress = "94.54.234.138",
-                            LastLogin = new DateTime(2020, 7, 26, 21, 51, 2, 969, DateTimeKind.Local).AddTicks(44),
+                            LastLogin = new DateTime(2020, 10, 1, 21, 38, 32, 450, DateTimeKind.Local).AddTicks(5622),
                             LastName = "Admin",
+                            Number = "05363192727",
                             Password = "123",
                             Status = 1,
                             Title = "Admin"

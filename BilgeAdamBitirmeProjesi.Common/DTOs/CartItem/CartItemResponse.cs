@@ -2,8 +2,6 @@
 using BilgeAdamBitirmeProjesi.Common.DTOs.Cart;
 using BilgeAdamBitirmeProjesi.Common.DTOs.Product;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BilgeAdamBitirmeProjesi.Common.DTOs.CartItem
 {
@@ -11,8 +9,13 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.CartItem
     {
         public Guid ProductId { get; set; }
         public virtual ProductResponse Product { get; set; }
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public Guid CartId { get; set; }
         public virtual CartResponse Cart { get; set; }
+        
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public string Image { get; set; }
+        public decimal Total { get; set; }
     }
 }

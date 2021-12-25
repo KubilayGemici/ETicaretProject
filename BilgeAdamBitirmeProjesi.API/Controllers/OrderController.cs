@@ -115,5 +115,18 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             //Tolistasync gördüğüm anda Query çalışıyor demektir.
             return _mapper.Map<List<OrderResponse>>(await _os.GetActive().ToListAsync());
         }
+
+        [HttpGet("orderiddenbul")]
+        public async Task<ActionResult<OrderResponse>> OrderiddenBul(Guid userid)
+        {
+            foreach (var item in _mapper.Map<List<OrderResponse>>(await _os.TableNoTracking.ToListAsync()))
+            {
+                if (item.UserId == userid)
+                {
+                    return _mapper.Map<OrderResponse>(item);
+                }
+            }
+            return null;
+        }
     }
 }

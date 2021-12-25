@@ -50,39 +50,6 @@ namespace BilgeAdamETic.API.Controllers
             return new WebApiResponse<UserResponse>("User Not Found", false);
         }
 
-        [HttpGet("check_user")]
-        public async Task<ActionResult<bool>> CheckUser(string email)
-        {
-            var result = await _us.Default(x => x.Email == email).CountAsync();
-
-            if (result == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        [HttpPost("add_user")]
-        public async Task<ActionResult<bool>> AddUser(string email,string password,string name)
-        {
-            Guid id = Guid.NewGuid();
-
-            User user = new User();
-            user.FirstName = name;
-            user.Email = email;
-            user.Password = password;
-            user.Id = id;
-
-            var gelen = _us.Add(user);
-
-
-
-            return true;
-        }
-
         private GetAccessToken SetAccessToken(UserResponse response)
         {
             var claims = new List<Claim>//Haklar Listesi

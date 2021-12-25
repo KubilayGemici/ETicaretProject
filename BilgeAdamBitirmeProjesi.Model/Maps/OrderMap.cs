@@ -19,8 +19,10 @@ namespace BilgeAdamBitirmeProjesi.Model.Maps
 
                 entity.HasExtended();
 
-                entity.Property(x => x.Quantity).HasMaxLength(15).IsRequired(true);
+                entity.Property(x => x.Address).HasMaxLength(200).IsRequired(true);
                 entity.Property(x => x.TotalPrice).HasMaxLength(20).IsRequired(true);
+                entity.Property(x => x.CustomerName).HasMaxLength(20).IsRequired(true);
+                entity.Property(x => x.CustomerSurName).HasMaxLength(20).IsRequired(true);
 
             });
         }

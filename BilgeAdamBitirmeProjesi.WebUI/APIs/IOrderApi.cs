@@ -30,5 +30,8 @@ namespace BilgeAdamBitirmeProjesi.WebUI.APIs
 
         [Get("/order/getactive")]
         Task<ApiResponse<List<OrderResponse>>> GetActive();
+
+        [Get("/order/orderiddenbul")]
+        Task<ApiResponse<OrderResponse>> OrderiddenBul(Guid userid);
     }
 }

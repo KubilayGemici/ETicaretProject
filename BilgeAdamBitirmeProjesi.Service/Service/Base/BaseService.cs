@@ -32,14 +32,14 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
                     _entities = _context.Set<T>();
                 return _entities;
 
-                
+
             }
         }
 
         public IQueryable<T> Table
         {
             get
-            {                
+            {
                 return Entities;
             }
         }
@@ -54,23 +54,25 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
 
         public async Task<T> Add(T item)
         {
-            try
             {
-                if (item == null)
-                    return null;
+                try
+                {
+                    if (item == null)
+                        return null;
+                    await Entities.AddAsync(item);
 
-                await Entities.AddAsync(item);
+                    if (await Save() > 0)
+                        return item;
+                    else
+                        return null;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
 
-                if (await Save() > 0)                
-                    return item;
-                else
-                    return null;
             }
-            catch (Exception ex)
-            {
 
-                throw ex;
-            }
         }
 
         public async Task<bool> AddRange(List<T> items)
@@ -115,7 +117,7 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
             {
                 queryable = queryable.Include(includeParameter);
             }
-            return await queryable.FirstOrDefaultAsync(x=>x.Id == id);
+            return await queryable.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public IQueryable<T> Default(Expression<Func<T, bool>> exp, params Expression<Func<T, object>>[] includeParameters)
@@ -131,10 +133,10 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
         public async Task<bool> Remove(T item)
         {
             item.Status = Status.Deleted;
-            if (await Update(item) != null)            
-                return true;            
-            else           
-                return false;       
+            if (await Update(item) != null)
+                return true;
+            else
+                return false;
         }
 
         public async Task<bool> Remove(Guid id)
@@ -173,7 +175,7 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
                     {
                         item.Status = Status.Deleted;
                         if (await Update(item) != null)
-                            count++;                      
+                            count++;
                     }
                     if (collection.Count() == count)
                         ts.Complete();
@@ -191,7 +193,16 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
 
         public async Task<int> Save()
         {
-            return await _context.SaveChangesAsync();
+            try
+            {
+                return await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public async Task<T> Update(T item)
@@ -206,7 +217,7 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
                 if (await Save() > 0)
                     return item;
                 else
-                    return null;       
+                    return null;
             }
             catch (Exception ex)
             {
@@ -220,7 +231,7 @@ namespace BilgeAdamBitirmeProjesi.Service.Service.Base
             T activated = await GetById(id);
             activated.Status = Status.Active;
             if (await Update(activated) != null)
-                return true;            
+                return true;
             else
                 return false;
         }

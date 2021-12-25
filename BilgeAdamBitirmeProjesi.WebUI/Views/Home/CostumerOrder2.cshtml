@@ -1,0 +1,44 @@
+﻿@model List<OrderDetailResponse>
+
+@{
+    ViewData["Title"] = "CostumerOrder2";
+}
+
+<div class="content-body">
+    <div class="row justify-content-between align-items-center mb-10">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="page-heading">
+                <h3 class="title"><span>Sipariş Detay</span></h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="box">
+                <div class="box-body">
+                    <table class="table table-bordered data-table data-table-default">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Adet</th>
+                                <th>Toplam Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (OrderDetailResponse item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.TotalPrice</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,39 +1,55 @@
 ﻿@model Tuple<ProductViewModel, UserViewModel>
 @{
-    ViewData["Title"] = "Product";
+    ViewData["Title"] = "Index";
 }
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 padding-right">
-                <div class="product-details">
-                    <!--product-details-->
-                    <div class="col-sm-5">
-                        <div class="view-product">
-                            <img src="@Model.Item1.Image" alt="">
+@using (Html.BeginForm("InsertCart1", "Cart", FormMethod.Post))
+{
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 padding-right">
+                    <div class="product-details">
+                        <!--product-details-->
+                        <div class="col-sm-5">
+                            <div class="view-product">
+                                <img src="@Model.Item1.Image" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="product-information">
-                            <!--/product-information-->
-                            <img src="images/product-details/new.jpg" class="newarrival" alt="">
-                            <h2>@Model.Item1.ProductName</h2>
-                            <span>
+                        <div class="col-sm-7">
+                            <div class="product-information">
+                                <!--/product-information-->
+                                <img src="images/product-details/new.jpg" class="newarrival" alt="">
+                                <h2>@Model.Item1.ProductName</h2>
+
                                 <span> @Model.Item1.Price TL</span>
-                                <label>Quantity:</label>
-                                <input type="text" value="1">
-                                <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
+                                <div class="product__details__quantity">
+                                    @*<input asp-for="Item1.Stock" type="text" value="1" id="miktar">*@
+                                    @Html.TextBox("miktar", "", new { type = "number", @class = "form-control", value = 1 })
+                                    @*FORMU POST FORMUNA ÇEVİR*@
+                                </div>
+                                <button class="button button-primary button-outline">
+
                                     Sepete Ekle
-                                </button>
-                            </span>
-                            <p><b>Ürün Özelliği:</b>@Model.Item1.Description</p>
-                            <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
-                        </div><!--/product-information-->
-                    </div>
-                </div><!--/product-details-->
+
+                                </button>@*EKLE BUTONU BURASI*@
+
+                                @*@if (string.IsNullOrEmpty(User.Identity.Name))
+                                    {
+                                        <a asp-controller="Cart" asp-action="InsertCart1" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Cart" asp-action="InsertCart1" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                    }*@
+
+                                <p><b>Ürün Özelliği:</b>@Model.Item1.Description</p>
+                                <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""></a>
+                            </div><!--/product-information-->
+                        </div>
+                    </div><!--/product-details-->
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+

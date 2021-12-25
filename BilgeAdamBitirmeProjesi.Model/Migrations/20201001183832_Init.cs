@@ -124,9 +124,10 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
                     ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
                     ModifiedUserID = table.Column<Guid>(nullable: true),
-                    Quantity = table.Column<int>(maxLength: 15, nullable: false),
-                    TotalPrice = table.Column<int>(maxLength: 20, nullable: false),
-                    PaymentType = table.Column<int>(nullable: false),
+                    CustomerName = table.Column<string>(maxLength: 20, nullable: false),
+                    CustomerSurName = table.Column<string>(maxLength: 20, nullable: false),
+                    Address = table.Column<string>(maxLength: 200, nullable: false),
+                    TotalPrice = table.Column<decimal>(maxLength: 20, nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<Guid>(nullable: false)
                 },
@@ -210,7 +211,8 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
                     ModifiedUserID = table.Column<Guid>(nullable: true),
                     ProductId = table.Column<Guid>(nullable: false),
-                    Amount = table.Column<int>(maxLength: 50, nullable: false),
+                    Amount = table.Column<decimal>(maxLength: 50, nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
                     CartId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -291,11 +293,11 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 250, nullable: true),
                     ModifiedIP = table.Column<string>(maxLength: 15, nullable: true),
                     ModifiedUserID = table.Column<Guid>(nullable: true),
-                    OrderId = table.Column<Guid>(nullable: false),
-                    ProductId = table.Column<Guid>(nullable: false),
                     ProductName = table.Column<string>(maxLength: 50, nullable: false),
-                    ProductPrice = table.Column<decimal>(maxLength: 255, nullable: false),
-                    ProductStock = table.Column<int>(maxLength: 255, nullable: false)
+                    TotalPrice = table.Column<decimal>(maxLength: 255, nullable: false),
+                    Quantity = table.Column<int>(maxLength: 20, nullable: false),
+                    OrderId = table.Column<Guid>(nullable: false),
+                    ProductId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -317,7 +319,7 @@ namespace BilgeAdamBitirmeProjesi.Model.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Adress", "CreatedComputerName", "CreatedDate", "CreatedIP", "CreatedUserID", "Email", "FirstName", "ImageUrl", "LastIPAdress", "LastLogin", "LastName", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "ModifiedUserID", "Number", "Password", "Status", "Title" },
-                values: new object[] { new Guid("61d59c48-18b4-4289-93e1-d16b67cdede3"), null, null, null, null, null, "admin@admin.com", "Admin", "/", "94.54.234.138", new DateTime(2020, 7, 26, 21, 51, 2, 969, DateTimeKind.Local).AddTicks(44), "Admin", null, null, null, null, null, "123", 1, "Admin" });
+                values: new object[] { new Guid("f6d0f9d9-f28d-4b9d-ae95-ca703f1aa29e"), "SeyyidÖmer Mah.", null, null, null, null, "admin@admin.com", "Admin", "/", "94.54.234.138", new DateTime(2020, 10, 1, 21, 38, 32, 450, DateTimeKind.Local).AddTicks(5622), "Admin", null, null, null, null, "05363192727", "123", 1, "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_CartId",

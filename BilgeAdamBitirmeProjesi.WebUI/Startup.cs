@@ -44,6 +44,12 @@ namespace BilgeAdamBitirmeProjesi.WebUI
             //Register Refit Interfaces
             RegisterClients(services);
 
+            //Session kullanýmý için gerekli.
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
+            });
+
             //AutoMapper
             services.AddAutoMapper(typeof(Startup));
 
@@ -81,6 +87,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI
 
             app.UseRouting();
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -158,7 +165,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI
                 .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))
                 .AddHttpMessageHandler((s) => s.GetService<AuthTokenHandler>());
 
-            services.AddRefitClient<IOrderDetail>()
+            services.AddRefitClient<IOrderDetailApi>()
                 .ConfigureHttpClient(client => { client.BaseAddress = baseUri; })
                 .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(60)))
                 .AddTransientHttpErrorPolicy(p => p.RetryAsync(3))

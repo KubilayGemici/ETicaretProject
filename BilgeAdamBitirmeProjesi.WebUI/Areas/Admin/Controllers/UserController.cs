@@ -2,7 +2,6 @@
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using BilgeAdamBitirmeProjesi.WebUI.APIs;
 using BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels;
-using BilgeAdamBitirmeProjesi.WebUI.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

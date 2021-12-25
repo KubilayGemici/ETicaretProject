@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BilgeAdamBitirmeProjesi.Common.DTOs.Cart;
+using BilgeAdamBitirmeProjesi.Common.DTOs.Order;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.Service.Service.Cart;
@@ -117,6 +118,32 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         {
             //Tolistasync gördüğüm anda Query çalışıyor demektir.
             return _mapper.Map<List<CartResponse>>(await _ccs.GetActive().ToListAsync());
+        }
+
+        [HttpGet("cartiddenbul")]
+        public async Task<ActionResult<CartResponse>> UseriddenCartidBul(Guid userid)
+        {
+            foreach (var item in _mapper.Map<List<CartResponse>>(await _ccs.TableNoTracking.ToListAsync()))
+            {
+                if (item.UserId == userid)
+                {
+                    return _mapper.Map<CartResponse>(item);
+                }
+            }
+            return null;
+        }
+
+        [HttpGet("orderiddenbul")]
+        public async Task<ActionResult<OrderResponse>> OrderiddenBul(Guid userid)
+        {
+            foreach (var item in _mapper.Map<List<OrderResponse>>(await _ccs.TableNoTracking.ToListAsync()))
+            {
+                if (item.UserId == userid)
+                {
+                    return _mapper.Map<OrderResponse>(item);
+                }
+            }
+            return null;
         }
     }
 }

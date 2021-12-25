@@ -18,12 +18,12 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Controllers
         private readonly IWebHostEnvironment _env;
         private readonly IUserApi _us;
         private readonly IMapper _mp;
-        private readonly IOrderDetail _od;
+        private readonly IOrderDetailApi _od;
 
         public OrderDetailController(
             IWebHostEnvironment env,
             IUserApi us,
-            IOrderDetail od,
+            IOrderDetailApi od,
             IMapper mp)
         {
             _env = env;

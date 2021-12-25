@@ -30,6 +30,10 @@
                             <ul class="nav nav-pills">
                                 <li><a href="#"><i class="fa fa-phone"></i> 05363192727</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> İnstagram : ruya.ev</a></li>
+                                @if (User.Identity.Name != "Admin" && !string.IsNullOrEmpty(User.Identity.Name))
+                                {
+                                    <b>Hoşgeldin @User.Identity.Name</b>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -57,18 +61,24 @@
                     <div class="col-md-8 clearfix">
                         <div class="shop-menu clearfix pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a asp-controller="Home" asp-action="UserInformation" asp-area=""><i class="fa fa-user"></i> Hesabınız</a></li>
-                                <li><a asp-controller="Home" asp-action="EmptyCart" asp-area=""><i class="fa fa-shopping-cart"></i>Sepet (@ViewBag.basket)</a></li>
-                               
 
-                                @if (string.IsNullOrEmpty(User.Identity.Name) && @ViewBag.userLogin == null)
+                                @if (User.Identity.Name == "Admin")
                                 {
-                                    <li><a asp-controller="Account" asp-action="Login" asp-area=""><i class="fa fa-lock"></i>Giriş</a></li>
+                                    <li><a asp-controller="Home" asp-action="Index" asp-area="Admin" title=""><i class="fa fa-home"></i>Yönetici</a></li>
+                                    <li><a asp-controller="Account" asp-action="Logout" title=""><i class="fa fa-sign-out"></i>Çıkış Yap</a></li>
+
+                                }
+                                else if (!string.IsNullOrEmpty(User.Identity.Name))
+                                {
+                                    <li><a asp-controller="CartItem" asp-action="Index" asp-area=""><i class="fa fa-shopping-cart"></i>Sepet</a></li>
+                                    <li><a asp-controller="Home" asp-action="CostumerOrder" asp-area=""><i class="fa fa-crosshairs"></i> Siparişlerim</a></li>
+                                    <li><a asp-controller="Account" asp-action="Logout" title=""><i class="fa fa-sign-out"></i>Çıkış Yap</a></li>
+
                                 }
                                 else
                                 {
-                                 
-                                    <a class="fa fa-user" asp-controller="Account" asp-action="Logout" title="">Çıkış Yap</a>
+                                    <li><a asp-controller="CartItem" asp-action="Index2" asp-area=""><i class="fa fa-shopping-cart"></i>Sepet</a></li>
+                                    <li><a asp-controller="Account" asp-action="Login" title=""><i class="fa fa-user"></i>Giriş yap</a></li>
                                 }
                             </ul>
                         </div>
@@ -95,11 +105,6 @@
                                 <vc:category></vc:category>
                                 <vc:trending></vc:trending>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Ürün Ara" />
                         </div>
                     </div>
                 </div>

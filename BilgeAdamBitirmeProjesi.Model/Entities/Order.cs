@@ -11,9 +11,10 @@ namespace BilgeAdamBitirmeProjesi.Model.Entities
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public int Quantity { get; set; }
-        public int TotalPrice { get; set; }
-        public int PaymentType { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerSurName { get; set; }
+        public string Address { get; set; }
+        public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }

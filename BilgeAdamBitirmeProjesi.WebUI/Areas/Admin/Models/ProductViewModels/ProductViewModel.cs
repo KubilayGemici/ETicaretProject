@@ -22,6 +22,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.ProductViewModels
         public string Image { get; set; }
         public short UnitsInStock { get; set; }
         public int ViewCount { get; set; }
+        public int QuantityPerUnit { get; set; }
         public string Title { get; set; }
         public DateTime? CreatedDate { get; set; }
 

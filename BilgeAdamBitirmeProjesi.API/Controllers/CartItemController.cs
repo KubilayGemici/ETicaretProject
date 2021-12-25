@@ -7,6 +7,7 @@ using BilgeAdamBitirmeProjesi.Common.DTOs.CartItem;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.Service.Service.CartItem;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,9 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             _mapper = mapper;
 
         }
+
+
+
         [HttpGet]
         public async Task<ActionResult<List<CartItemResponse>>> GetCategories()
         {
@@ -78,12 +82,13 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<CartItemResponse>> PostCartItem(CartItemRequest request)
         {
             CartItem entity = _mapper.Map<CartItem>(request);
             var insertResult = await _cıs.Add(entity);
             if (insertResult != null)
-                return CreatedAtAction("GetCart", new { id = insertResult.Id }, _mapper.Map<CartItemResponse>(insertResult));
+                return CreatedAtAction("GetCategories", new { id = insertResult.Id }, _mapper.Map<CartItemResponse>(insertResult));
             else
                 return new CartItemResponse();
         }

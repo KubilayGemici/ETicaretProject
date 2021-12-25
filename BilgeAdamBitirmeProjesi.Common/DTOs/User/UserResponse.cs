@@ -11,7 +11,7 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.User
     {
         public UserResponse()
         {
-            //Product çıkıcak.
+
             Products = new HashSet<ProductResponse>();
             Comments = new HashSet<CommentResponse>();
         }
@@ -26,7 +26,7 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.User
         public DateTime? LastLogin { get; set; }
         public string LastIPAdress { get; set; }
         public DateTime? CreatedDate { get; set; }
-        //Product çıkıcak.
+
         public virtual ICollection<ProductResponse> Products { get; set; }
         public virtual ICollection<CommentResponse> Comments { get; set; }
 

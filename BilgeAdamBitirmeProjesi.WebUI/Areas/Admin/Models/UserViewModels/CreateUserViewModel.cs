@@ -1,9 +1,5 @@
 ﻿using BilgeAdamBitirmeProjesi.Common.Client.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels
 {
@@ -14,9 +10,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Areas.Admin.Models.UserViewModels
         [Required]
         public string LastName { get; set; }
         public string ImageUrl { get; set; }
-        [Required(ErrorMessage ="Email Adressiniz Hatalı")]
         public string Email { get; set; }
-        [Required(ErrorMessage ="Şifreniz Hatalı")]
         public string Password { get; set; }
         public string Title { get; set; }
         public Status Status { get; set; }

@@ -22,7 +22,11 @@ namespace BilgeAdamBitirmeProjesi.Model.SeedData
                     Title = "Admin",
                     ImageUrl = "/",
                     LastLogin = DateTime.Now,
-                    LastIPAdress = "94.54.234.138"
+                    LastIPAdress = "94.54.234.138",
+                    Adress = "SeyyidÖmer Mah.",
+                    Number = "05363192727"
+                    
+                    
                 });
         }
     }

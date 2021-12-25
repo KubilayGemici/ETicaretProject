@@ -1,7 +1,7 @@
-﻿@model List<OrderDetailViewModel>
+﻿@model List<OrderDetailResponse>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index2";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     <div class="row justify-content-between align-items-center mb-10">
         <div class="col-12 col-lg-auto mb-20">
             <div class="page-heading">
-                <h3 class="title"><span>Siparişler</span></h3>
+                <h3 class="title"><span>Müşteri Sipariş Detay</span></h3>
             </div>
         </div>
     </div>
@@ -20,20 +20,18 @@
                     <table class="table table-bordered data-table data-table-default">
                         <thead>
                             <tr>
-                                <th>Müşteri Id</th>
-                                <th>Ürün</th>
+                                <th>Ürün Adı</th>
                                 <th>Adet</th>
                                 <th>Toplam Fiyat</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (OrderDetailViewModel item in Model)
+                            @foreach (OrderDetailResponse item in Model)
                             {
                                 <tr>
-                                    <td>@item.Order</td>
-                                    <td>@item.Product</td>
-                                    <td>@item.ProductPrice</td>
-                                    <td>@item.ProductStock</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.TotalPrice</td>
                                 </tr>
                             }
                         </tbody>

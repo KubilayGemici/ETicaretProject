@@ -21,7 +21,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI.APIs
         Task<ApiResponse<CartResponse>> Put(Guid id, CartRequest request);
 
         [Post("/cart")]
-        Task<ApiResponse<CartResponse>> Post(Cart request);
+        Task<ApiResponse<CartResponse>> Post(CartRequest request);
 
         [Delete("/cart/{id}")]
         Task<ApiResponse<CartResponse>> Delete(Guid id);
@@ -31,5 +31,11 @@ namespace BilgeAdamBitirmeProjesi.WebUI.APIs
 
         [Get("/cart/getactive")]
         Task<ApiResponse<List<CartResponse>>> GetActive();
+
+        [Get("/cart/cartiddenbul")]
+        Task<ApiResponse<CartResponse>> UseriddenCartidBul(Guid userid);
+
+
+
     }
 }

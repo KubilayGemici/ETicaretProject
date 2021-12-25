@@ -39,6 +39,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ProductResponse>> GetProduct(Guid id)
         {
             var product = _mapper.Map<ProductResponse>(await _ps.GetById(id));
@@ -48,6 +49,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ProductResponse>> PutProduct(Guid id, ProductRequest request)
         {
             if (id != request.Id)
@@ -121,7 +123,9 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             return _mapper.Map<List<ProductResponse>>(await _ps.GetActive().ToListAsync());
         }
 
+
         [HttpGet("GetByCategoryId/{categoryId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<ProductResponse>>> GetByCategoryId(Guid categoryId)
         {
             return _mapper.Map<List<ProductResponse>>(_ps.Default(x => x.CategoryId == categoryId));

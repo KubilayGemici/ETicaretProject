@@ -3,6 +3,7 @@ using BilgeAdamBitirmeProjesi.Common.DTOs.Category;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.Service.Service.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -110,6 +111,7 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpGet("getactive")]
+        [AllowAnonymous]
         public async Task<ActionResult<List<CategoryResponse>>> GetActive()
         {
             //Tolistasync gördüğüm anda Query çalışıyor demektir.

@@ -15,9 +15,9 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="@item.Image" alt="" />
-                                        <h2>@item.Price</h2>
+                                        <h2>@item.Price TL</h2>
                                         <p>@item.ProductName</p>
-                                        <a  asp-controller="Home" asp-action="AddCart" asp-route-id="@item.Id"  class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+                                        <a asp-controller="Home" asp-action="Product" asp-route-id="@item.Id" title="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
                                     </div>
                                 </div>
                                 <div class="choose">

@@ -7,6 +7,6 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.Cart
 {
     public class CartRequest : BaseDto
     {
-
+        public Guid UserId { get; set; }
     }
 }

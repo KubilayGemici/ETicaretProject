@@ -28,5 +28,7 @@ namespace BilgeAdamBitirmeProjesi.WebUI.APIs
 
         [Get("/user/activate/{id}")]
         Task<ApiResponse<UserResponse>> Activate(Guid id);
+
+
     }
 }

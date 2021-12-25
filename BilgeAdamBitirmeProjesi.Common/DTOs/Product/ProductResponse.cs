@@ -1,6 +1,8 @@
 ﻿using BilgeAdamBitirmeProjesi.Common.DTOs.Base;
+using BilgeAdamBitirmeProjesi.Common.DTOs.CartItem;
 using BilgeAdamBitirmeProjesi.Common.DTOs.Category;
 using BilgeAdamBitirmeProjesi.Common.DTOs.Comment;
+using BilgeAdamBitirmeProjesi.Common.DTOs.OrderDetail;
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,8 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.Product
         public ProductResponse()
         {
             Comments = new HashSet<CommentResponse>();
+            CartItems = new HashSet<CartItemResponse>();
+            OrderDetails = new HashSet<OrderDetailResponse>();
         }
         public string ProductName { get; set; }
         public string Description { get; set; }
@@ -30,5 +34,7 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.Product
         public virtual UserResponse User { get; set; }
         //Listeler çoğul
         public ICollection<CommentResponse> Comments { get; set; }
+        public ICollection<CartItemResponse> CartItems { get; set; }
+        public ICollection<OrderDetailResponse> OrderDetails { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace BilgeAdamBitirmeProjesi.Model.Context
     public class DataContext : DbContext
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+
         public DataContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor) 
             :base(options)
         {
@@ -86,16 +87,25 @@ namespace BilgeAdamBitirmeProjesi.Model.Context
         }
         private Guid? GetUserId()
         {
-            string userId = "";
-            if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            try
             {
-                var claims = _httpContextAccessor.HttpContext.User.Claims.ToList();
-                userId = claims?.FirstOrDefault(x => x.Type.Equals("jti", StringComparison.OrdinalIgnoreCase))?.Value;
+                string userId = "";
+                string bosId = "cc302259-2cd8-4fc9-9a69-58fd691a8cb3";
+                if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                {
+                    var claims = _httpContextAccessor.HttpContext.User.Claims.ToList();
+                    userId = claims?.FirstOrDefault(x => x.Type.Equals("jti", StringComparison.OrdinalIgnoreCase))?.Value;
+                }
+                if (!string.IsNullOrEmpty(userId))
+                    return Guid.Parse(userId);
+                else
+                    return Guid.Parse(bosId);
             }
-            if (userId != null)
-                return Guid.Parse(userId);
-            else
-                return Guid.Empty;
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

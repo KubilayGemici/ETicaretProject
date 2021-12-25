@@ -9,12 +9,14 @@ namespace BilgeAdamBitirmeProjesi.Common.DTOs.OrderDetail
 {
     public class OrderDetailResponse : BaseDto
     {
+        public string ProductName { get; set; }
+        public decimal TotalPrice { get; set; }
+        public int Quantity { get; set; }
         public Guid OrderId { get; set; }
         public virtual OrderResponse Order { get; set; }
         public Guid ProductId { get; set; }
         public virtual ProductResponse Product { get; set; }
-        public string ProductName { get; set; }
-        public decimal ProductPrice { get; set; }
-        public int ProductStock { get; set; }
+
+
     }
 }

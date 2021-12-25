@@ -1,9 +1,6 @@
 ﻿using BilgeAdamBitirmeProjesi.Common.Client.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BilgeAdamBitirmeProjesi.WebUI.Models.AccountViewModels
 {
@@ -12,7 +9,6 @@ namespace BilgeAdamBitirmeProjesi.WebUI.Models.AccountViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }
-        public string ImageUrl { get; set; }
         public string Adress { get; set; }
         public string Number { get; set; }
         [Required(ErrorMessage = "E-Posta Adresi Gereklidir.")]

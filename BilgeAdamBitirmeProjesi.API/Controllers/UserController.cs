@@ -2,6 +2,7 @@
 using BilgeAdamBitirmeProjesi.Common.DTOs.User;
 using BilgeAdamBitirmeProjesi.Model.Entities;
 using BilgeAdamBitirmeProjesi.Service.Service.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -76,8 +77,10 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<UserResponse>> PostUser(UserRequest request)
         {
+
             User entity = _mapper.Map<User>(request);
             var insertResult = await _us.Add(entity);
             if (insertResult != null)
@@ -102,20 +105,6 @@ namespace BilgeAdamBitirmeProjesi.API.Controllers
             var result = await _us.Activate(id);
             //Databaseden son hali çekilir
             return _mapper.Map<UserResponse>(await _us.GetById(id));
-        }
-
-        public async Task<ActionResult<bool>> CheckUser(string email)
-        {
-            var result = await _us.Default(x => x.Email == email).CountAsync();
-
-            if (result == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private async Task<bool> UserExist(Guid id)

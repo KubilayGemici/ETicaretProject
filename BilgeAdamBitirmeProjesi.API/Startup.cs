@@ -7,6 +7,7 @@ using BilgeAdamBitirmeProjesi.Service.Service.CartItem;
 using BilgeAdamBitirmeProjesi.Service.Service.Category;
 using BilgeAdamBitirmeProjesi.Service.Service.Comment;
 using BilgeAdamBitirmeProjesi.Service.Service.Order;
+using BilgeAdamBitirmeProjesi.Service.Service.OrderDetail;
 using BilgeAdamBitirmeProjesi.Service.Service.Product;
 using BilgeAdamBitirmeProjesi.Service.Service.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -69,7 +70,7 @@ namespace BilgeAdamBitirmeProjesi.API
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICartItemService, CartItemService>();
             services.AddTransient<ICartService, CartService>();
-            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderDetailService, OrderDetailService>();
 
 
             //CORS
